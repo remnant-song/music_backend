@@ -1,0 +1,17 @@
+server:
+  port: 80
+service:
+  login: userService8001
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      routes:
+        - id: login
+          uri: lb://${service.login}
+          predicates:
+            - Path=/login/**

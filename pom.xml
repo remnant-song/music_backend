@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>domain</module>
+        <module>music_gateway</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
