@@ -15,3 +15,5 @@ spring:
           uri: lb://${service.login}
           predicates:
             - Path=/login/**
+          filters:
+            - GetUserId

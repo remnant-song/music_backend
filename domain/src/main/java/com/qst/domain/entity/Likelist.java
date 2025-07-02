@@ -21,12 +21,14 @@ import lombok.Setter;
 public class Likelist implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @ApiModelProperty("歌单id")
-      @TableId("listId")
-    private Integer listId;
-
-    @ApiModelProperty("用户id")
-      @TableId("userId")
-    private Integer userId;
+    @ApiModelProperty("联合主键")
+    @TableId // 标记联合主键
+    private LikelistPK id;
+//    @ApiModelProperty("歌单id")
+//      @TableId("listId")
+//    private Integer listId;
+//
+//    @ApiModelProperty("用户id")
+//      @TableId("userId")
+//    private Integer userId;
 }

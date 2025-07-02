@@ -26,7 +26,7 @@ public class CodeGenerator {
                     builder.parent(parentPackage)
                             .entity("entity")
                             .service("service")
-                            .serviceImpl("service.impl")
+//                            .serviceImpl("service.impl")//domain中不应该有实现类
                             .mapper("mapper")
                             .controller("controller")
                             .pathInfo(Collections.singletonMap(OutputFile.xml, System.getProperty("user.dir") + "/domain/src/main/resources/mapper"));
