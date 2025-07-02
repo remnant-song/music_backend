@@ -47,6 +47,20 @@
             <artifactId>mybatis-spring</artifactId>
             <version>3.0.4</version>
         </dependency>
+<!--        这是一个典型的 NoClassDefFoundError，表明 JVM 在运行时找不到 javax.xml.bind.DatatypeConverter 类。-->
+<!--        这个问题通常出现在 Java 9+ 环境中，因为 JAXB API（Java Architecture for XML Binding） -->
+<!--        从 Java 9 开始被标记为 deprecated，并在 Java 11 中完全移除。-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jaxb</groupId>
+            <artifactId>jaxb-runtime</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

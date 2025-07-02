@@ -64,7 +64,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
     @Override
     public Mess register(User user) {
-        System.out.println("register");
+        System.out.println("userServiceImpl.java.register()");
         QueryWrapper<User> wrapper=new QueryWrapper<>();
         wrapper.eq("email",user.getEmail()).or().eq("phone",user.getPhone());
         if(getOne(wrapper)!=null){
@@ -126,6 +126,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             update(wrapper);
             return "账号激活成功";
         }catch (Exception e){
+            e.printStackTrace();  // 打印堆栈，方便排查
             System.out.println(e);
             return "账号激活失败 失败信息为".concat(e.getMessage());
         }
