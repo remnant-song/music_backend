@@ -1,5 +1,6 @@
 package com.qst.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
@@ -27,6 +28,6 @@ public class Mylike implements Serializable {
     private Integer user;
 
     @ApiModelProperty("歌曲id")
-      @TableId("music")
+      @TableField("music")
     private Integer music;
 }

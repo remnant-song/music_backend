@@ -1,5 +1,6 @@
 package com.qst.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -25,10 +26,10 @@ public class ListMusic implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty("歌单id")
-      @TableId("listid")
+    @TableId("listid")
     private Integer listid;
 
     @ApiModelProperty("歌曲id")
-      @TableId("music")
+    @TableField("music")
     private Integer music;
 }
