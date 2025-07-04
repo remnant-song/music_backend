@@ -1,0 +1,11 @@
+表名	
+功能说明
+
+user		用户表
+music	歌曲信息表
+log		操作日志表
+mylike	歌曲收藏表
+msg		消息表
+song_list	歌单信息表
+list_music	歌单歌曲关系表
+likelist	用户歌单收藏关系表
