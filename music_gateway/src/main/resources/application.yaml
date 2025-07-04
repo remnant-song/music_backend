@@ -6,6 +6,7 @@ service:
   admin: adminService8003
   singer: SingerService8004
   setting: settingService8005
+  msg: msgService8006
 spring:
   application:
     name: gateway
@@ -43,5 +44,11 @@ spring:
           uri: lb://${service.setting}
           predicates:
             - Path=/setting/**
+          filters:
+            - GetUserId=1
+        - id: msg
+          uri: lb://${service.msg}
+          predicates:
+            - Path=/msg/**
           filters:
             - GetUserId=1
