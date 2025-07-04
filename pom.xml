@@ -15,6 +15,7 @@
         <module>Mod_music</module>
         <module>Mod_admin</module>
         <module>Mod_singer</module>
+        <module>Mod_setting</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

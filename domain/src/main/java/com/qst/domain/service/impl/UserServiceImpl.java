@@ -18,13 +18,4 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
-    @Override
-    public Mess recommendSinger() {
-        return null;
-    }
-
-    @Override
-    public Mess singerDetails(Integer id) {
-        return null;
-    }
 }

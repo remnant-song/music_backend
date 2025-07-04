@@ -14,7 +14,4 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IUserService extends IService<User> {
 
-    Mess recommendSinger();
-
-    Mess singerDetails(Integer id);
 }

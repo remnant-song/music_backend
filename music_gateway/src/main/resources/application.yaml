@@ -5,6 +5,7 @@ service:
   music: musicService8002
   admin: adminService8003
   singer: SingerService8004
+  setting: settingService8005
 spring:
   application:
     name: gateway
@@ -38,3 +39,9 @@ spring:
             - Path=/singer/**
           filters:
             - Authorize=1
+        - id: setting
+          uri: lb://${service.setting}
+          predicates:
+            - Path=/setting/**
+          filters:
+            - GetUserId=1
