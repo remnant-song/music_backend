@@ -1,5 +1,6 @@
 package com.qst.login.service.impl;
 
+import com.alibaba.nacos.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -117,18 +118,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return Mess.success().data("user",user);
     }
 
+//    @Override
+//    public String activation(String token) {
+//        try {
+//            String name = JwtUtils.getMemberNameByJwtToken(token);
+//            UpdateWrapper<User> wrapper = new UpdateWrapper<>();
+//            wrapper.eq("username",name).set("activation",0);
+//            update(wrapper);
+//            return "账号激活成功";
+//        }catch (Exception e){
+//            e.printStackTrace();  // 打印堆栈，方便排查
+//            System.out.println(e);
+//            return "账号激活失败 失败信息为".concat(e.getMessage());
+//        }
+//    }
+//    保证 token 判空
+//
+//    同样用 try/catch 捕获 token 解析异常
     @Override
     public String activation(String token) {
+        if (!StringUtils.hasLength(token)) {
+            return "激活失败，未提供token";
+        }
         try {
             String name = JwtUtils.getMemberNameByJwtToken(token);
             UpdateWrapper<User> wrapper = new UpdateWrapper<>();
-            wrapper.eq("username",name).set("activation",0);
+            wrapper.eq("username", name).set("activation", 0);
             update(wrapper);
             return "账号激活成功";
-        }catch (Exception e){
-            e.printStackTrace();  // 打印堆栈，方便排查
-            System.out.println(e);
-            return "账号激活失败 失败信息为".concat(e.getMessage());
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "账号激活失败，失败信息为：".concat(e.getMessage());
         }
     }
+
 }

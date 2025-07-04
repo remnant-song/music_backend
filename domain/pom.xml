@@ -38,10 +38,31 @@
             <version>1.5</version>
         </dependency>
 
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt</artifactId>-->
+<!--            <version>0.8.0</version>-->
+<!--        </dependency>-->
+<!--        javax.xml.bind.DatatypeConverter 在 JDK 9 及以上被移除了模块化之外（属于 Java EE 模块的 java.xml.bind），-->
+<!--        而你用的 jjwt 版本（0.8.0）内部依赖它来做 Base64 编解码。-->
+<!--        在 JDK 8 里，这个类默认存在；而从 JDK 9 开始，-->
+<!--        它被拆分进了 java.xml.bind 模块，在 JDK 11+ 中直接不再包含-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-            <version>0.8.0</version>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId> <!-- 使用 jackson 做序列化 -->
+            <version>0.11.5</version>
+            <scope>runtime</scope>
         </dependency>
 
         <dependency>

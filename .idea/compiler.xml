@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="Mod_singer" />
         <module name="Mod_music" />
         <module name="Mod_admin" />
         <module name="music_gateway" />
@@ -20,6 +21,7 @@
       <module name="Mod_admin" options="-parameters" />
       <module name="Mod_login" options="-parameters" />
       <module name="Mod_music" options="-parameters" />
+      <module name="Mod_singer" options="-parameters" />
       <module name="domain" options="-parameters" />
       <module name="music" options="" />
       <module name="music_gateway" options="-parameters" />
