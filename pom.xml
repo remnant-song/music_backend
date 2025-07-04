@@ -13,6 +13,7 @@
         <module>music_gateway</module>
         <module>Mod_login</module>
         <module>Mod_music</module>
+        <module>Mod_admin</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

@@ -49,14 +49,14 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
             case "newList":
                 mess= (Mess) redisUtils.get("newList");
                 if(mess==null){
-                    mess=Mess.success().data("list",mapper.recommendHot(10));
+                    mess=Mess.success().data("list",mapper.recommendNew(10));
                     redisUtils.set("newList",mess,15L, TimeUnit.MINUTES);
                 }
                 break;
             case "recommendList":
                 mess= (Mess) redisUtils.get("recommendList");
                 if(mess==null){
-                    mess=Mess.success().data("list",mapper.recommendHot(10));
+                    mess=Mess.success().data("list",mapper.recommendRandom(10));
                     redisUtils.set("recommendList",mess,15L, TimeUnit.MINUTES);
                 }
                 break;

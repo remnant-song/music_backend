@@ -3,6 +3,7 @@ server:
 service:
   login: userService8001
   music: musicService8002
+  admin: adminService8003
 spring:
   application:
     name: gateway
@@ -24,3 +25,9 @@ spring:
             - Path=/music/**
           filters:
             - GetUserId
+        - id: admin
+          uri: lb://${service.admin}
+          predicates:
+            - Path=/admin/**
+          filters:
+            - Authorize=0

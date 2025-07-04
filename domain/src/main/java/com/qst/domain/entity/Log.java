@@ -29,7 +29,7 @@ public class Log implements Serializable {
 
     @ApiModelProperty("操作记录")
     private String doSome;
-
+    @TableField("musicName")
     @ApiModelProperty("操作歌曲记录")
     private String musicName;
 

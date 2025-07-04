@@ -3,7 +3,7 @@ package com.qst.login;
 import com.qst.domain.entity.Mess;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
+//开发过程的问题排查类
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
