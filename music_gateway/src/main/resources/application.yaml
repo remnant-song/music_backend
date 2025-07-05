@@ -8,6 +8,7 @@ service:
   setting: settingService8005
   msg: msgService8006
   upload: uploadService8007
+  songList: songListService8008
 spring:
   application:
     name: gateway
@@ -67,3 +68,9 @@ spring:
             - Path=/file/**
           filters:
             - RewritePath=/file/(?<segment>.*), /image/${segment}
+        - id: songList
+          uri: lb://${service.songList}
+          predicates:
+            - Path=/songList/**
+          filters:
+            - GetUserId

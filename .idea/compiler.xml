@@ -16,6 +16,7 @@
         <module name="Mod_setting" />
         <module name="Mod_admin" />
         <module name="music_gateway" />
+        <module name="Mod_songList" />
       </profile>
     </annotationProcessing>
   </component>
@@ -27,6 +28,7 @@
       <module name="Mod_music" options="-parameters" />
       <module name="Mod_setting" options="-parameters" />
       <module name="Mod_singer" options="-parameters" />
+      <module name="Mod_songList" options="-parameters" />
       <module name="Mod_upload" options="-parameters" />
       <module name="domain" options="-parameters" />
       <module name="music" options="" />

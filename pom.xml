@@ -18,6 +18,7 @@
         <module>Mod_setting</module>
         <module>Mod_msg</module>
         <module>Mod_upload</module>
+        <module>Mod_songList</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
