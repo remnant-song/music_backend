@@ -9,6 +9,7 @@ service:
   msg: msgService8006
   upload: uploadService8007
   songList: songListService8008
+  like: likeService8009
 spring:
   application:
     name: gateway
@@ -74,3 +75,9 @@ spring:
             - Path=/songList/**
           filters:
             - GetUserId
+        - id: like
+          uri: lb://${service.like}
+          predicates:
+            - Path=/mylike/**
+          filters:
+            - GetUserId=1
