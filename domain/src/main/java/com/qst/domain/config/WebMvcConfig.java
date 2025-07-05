@@ -2,19 +2,11 @@ package com.qst.domain.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
-
-//    @Override
-//    public void addCorsMappings(CorsRegistry registry) {
-//        registry.addMapping("/**")
-//                .allowedOrigins("*")
-//                .allowedMethods("POST", "GET", "PUT", "OPTIONS", "DELETE")
-//                .maxAge(3600)
-//                .allowCredentials(true);
-//    }
 //CORS 配置同时设置了
 //✅ allowedOrigins("*")（表示允许任意来源）
 //✅ allowCredentials(true)（允许携带 cookie 等凭据）
@@ -31,5 +23,14 @@ public class WebMvcConfig implements WebMvcConfigurer {
                     .maxAge(3600)
                     .allowCredentials(true);
         }
-
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        // 将 /file/image/** 映射到 D:/file/image/ 目录
+        registry.addResourceHandler("/file/image/**")
+                .addResourceLocations("file:D:/file/image/");
+        registry.addResourceHandler("/file/music/**")
+                .addResourceLocations("file:D:/file/music/");
+        registry.addResourceHandler("/file/lyric/**")
+                .addResourceLocations("file:D:/file/lyric/");
+    }
 }

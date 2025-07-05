@@ -1,0 +1,79 @@
+#server:
+#  port: 8007
+#service:
+#  ipAddr: http://localhost
+#download:
+#  address: D:\file\
+#spring:
+#  application:
+#    name: uploadService8007
+#  servlet:
+#    multipart:
+#      max-file-size: 20MB
+#      max-request-size: 30MB
+#  mvc:
+#    static-path-pattern: /file/**
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#  web:
+#    resources:
+#      static-locations: file:d:/file/image/
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+
+#server:
+#  port: 8007
+#service:
+#  ipAddr: http://localhost
+#download:
+#  address: D:\file\
+#spring:
+#  application:
+#    name: uploadService8007
+#  servlet:
+#    multipart:
+#      max-file-size: 20MB
+#      max-request-size: 30MB
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#  web:
+#    resources:
+#      static-locations: file:/D:/file/image/
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: '*'
+
+server:
+  port: 8007
+service:
+  ipAddr: http://localhost
+download:
+  address: D:\file\
+spring:
+  application:
+    name: uploadService8007
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 30MB
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+#  web:
+#    resources:
+#      static-locations: file:${download.address}/image/  # 使用变量确保路径一致
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
