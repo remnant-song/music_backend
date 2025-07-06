@@ -77,3 +77,21 @@ management:
     web:
       exposure:
         include: '*'
+
+huawei:
+  agc:
+    credential-path: D:\Download\agc-apiclient-1723321097677493184-40c372f6e3e14f6c93382d2595d3052c.json  # 凭据文件路径
+    bucket-name: example-o999j  # 存储桶名称
+    region: CN  # 区域标识（CN/DE/SG/RU）
+    storage-url: https://ops-server-drcn.agcstorage.link/v0/  # 存储服务URL
+    client-id: 1723321097677493184  # 客户端ID（从凭据文件获取）
+    project-id: 461323198430067964  # 项目ID（从凭据文件获取）
+
+#huawei:
+#  agc:
+#    domain: ops-server-drcn.agcstorage.link/v0 # 根据项目区域选择
+#    project-id: 7364****4461998 # 您的项目ID
+#    client-id: 8490****0232064 # 您的客户端ID
+#    credential-path: classpath:agc-apiclient-1723321097677493184-40c372f6e3e14f6c93382d2595d3052c.json
+#    storage:
+#      bucket-name: example-o999j

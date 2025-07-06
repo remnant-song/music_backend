@@ -28,7 +28,7 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
         Mess mess=null;
         mess = (Mess) redisUtils.get("Recommend");
         if (mess==null){
-            mess=Mess.success().data("hotMusic",mapper.recommendHot(3)).data("newMusic",mapper.recommendNew(3)).data("recommendMusic",mapper.recommendRandom(3));
+            mess=Mess.success().data("hotMusic",mapper.recommendHot(4)).data("newMusic",mapper.recommendNew(4)).data("recommendMusic",mapper.recommendRandom(4));
             redisUtils.set("Recommend",mess,15L, TimeUnit.MINUTES);
         }
         return mess;
@@ -101,6 +101,7 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
                     }
                 }
             }
+            System.out.println(music.toString());
             return Mess.success().data("music",music);
         }
     }

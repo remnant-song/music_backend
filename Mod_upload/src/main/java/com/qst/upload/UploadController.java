@@ -1,22 +1,20 @@
 package com.qst.upload;
 
 import com.qst.domain.entity.Mess;
+import com.qst.upload.huawei.HuaweiStorageUploadService;
 import com.qst.upload.util.CheckUtil;
 import com.qst.upload.util.MusicUtil;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @RestController
-
 @RequestMapping("/upload")
 public class UploadController {
 
     @Autowired
     UploadService uploadService;
-
     @PostMapping("upImage")
     public Mess upLoadImage(MultipartFile file){
         if(CheckUtil.isImage(file.getOriginalFilename())) {
@@ -44,6 +42,4 @@ public class UploadController {
         }
         return Mess.fail().mess("文件格式错误");
     }
-
-
 }

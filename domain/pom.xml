@@ -154,8 +154,31 @@
             <artifactId>jaudiotagger</artifactId>
             <version>2.0.3</version>
         </dependency>
+<!--&lt;!&ndash;        华为Java Server SDK&ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.huawei.agconnect.server</groupId>-->
+<!--            <artifactId>agconnect-auth</artifactId>-->
+<!--            <version>1.2.0.301</version>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.huawei.agconnect.server</groupId>-->
+<!--            <artifactId>agconnect-database-server-sdk</artifactId>-->
+<!--            <version>1.0.5.300</version>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>com.huawei.agconnect.server</groupId>
+            <artifactId>agconnect-storage</artifactId>
+            <version>1.2.0.101</version>
+        </dependency>
     </dependencies>
-
+<!--    华为仓库-->
+    <repositories>
+        <repository>
+            <id>sz-maven-public</id>
+            <name>sz-maven-public</name>
+            <url>https://developer.huawei.com/repo/</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>

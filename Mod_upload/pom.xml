@@ -12,6 +12,17 @@
 
     <artifactId>Mod_upload</artifactId>
     <dependencies>
+        <!-- 华为AGC存储SDK -->
+        <dependency>
+            <groupId>com.huawei.agconnect.server</groupId>
+            <artifactId>agconnect-storage</artifactId>
+            <version>1.2.0.101</version>
+        </dependency>
+        <dependency>
+            <groupId>com.huawei.agconnect.server</groupId>
+            <artifactId>agconnect-commons</artifactId>
+            <version>1.2.0.300</version>
+        </dependency>
         <dependency>
             <groupId>com.qst</groupId>
             <artifactId>domain</artifactId>
@@ -37,8 +48,18 @@
             <artifactId>jaudiotagger</artifactId>
             <version>2.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>io.projectreactor.netty</groupId>
+            <artifactId>reactor-netty</artifactId>
+        </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>sz-maven-public</id>
+            <name>sz-maven-public</name>
+            <url>https://developer.huawei.com/repo/</url>
+        </repository>
+    </repositories>
     <build>
         <plugins>
             <plugin>

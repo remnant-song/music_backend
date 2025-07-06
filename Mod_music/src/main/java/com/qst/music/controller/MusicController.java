@@ -1,6 +1,7 @@
 package com.qst.music.controller;
 
 import com.qst.domain.entity.Mess;
+import com.qst.domain.util.JwtUtils;
 import com.qst.music.service.IMusicService;
 import com.qst.music.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,16 @@ public class MusicController {
     }
 
     @GetMapping("/detail")
-    public Mess getOne(@RequestParam Integer musicId, @RequestHeader("id")Integer id){
+    public Mess getOne(@RequestParam Integer musicId, @RequestHeader("Authorization") String token){
+
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        Integer id = JwtUtils.getMemberIdByJwtToken(token);
+        if (id == null) {
+            return Mess.fail().mess("无效或过期的 token");
+        }
+        System.out.println("controller中detail接口被调用"+"musicId="+musicId+"id="+id);
         return musicService.getMusic(musicId,id);
     }
     @GetMapping("/getRecommendSinger")

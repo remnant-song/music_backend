@@ -12,6 +12,11 @@
       <option name="url" value="https://maven.aliyun.com/repository/spring/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="sz-maven-public" />
+      <option name="name" value="sz-maven-public" />
+      <option name="url" value="https://developer.huawei.com/repo/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />
