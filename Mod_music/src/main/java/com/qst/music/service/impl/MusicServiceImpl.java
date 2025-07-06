@@ -23,11 +23,22 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
     @Autowired
     MusicMapper mapper;
     @Override
+    public Mess MainRecommend() {
+        Mess mess=null;
+        mess = (Mess) redisUtils.get("MainRecommend");
+        if (mess==null){
+            mess=Mess.success().data("mainList",mapper.recommendRandom(20));
+            redisUtils.set("MainRecommend",mess,15L, TimeUnit.MINUTES);
+        }
+        return mess;
+    }
+    @Override
     public Mess Recommend() {
         System.out.println("Recommend接口被调用了");
         Mess mess=null;
         mess = (Mess) redisUtils.get("Recommend");
         if (mess==null){
+//            mess=Mess.success().data("hotMusic",mapper.recommendRandom(4));
             mess=Mess.success().data("hotMusic",mapper.recommendHot(4)).data("newMusic",mapper.recommendNew(4)).data("recommendMusic",mapper.recommendRandom(4));
             redisUtils.set("Recommend",mess,15L, TimeUnit.MINUTES);
         }

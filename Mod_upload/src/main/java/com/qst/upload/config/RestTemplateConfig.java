@@ -1,8 +1,13 @@
 package com.qst.upload.config;
 
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -14,6 +19,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class RestTemplateConfig {
@@ -39,5 +45,46 @@ public class RestTemplateConfig {
         restTemplate.setMessageConverters(converters);
 
         return restTemplate;
+    }
+//    使用PoolingHttpClientConnectionManager管理连接池
+//    支持连接重用，减少TCP连接开销
+//            配置连接生命周期和空闲超时
+    @Bean
+    public PoolingHttpClientConnectionManager poolingHttpClientConnectionManager(
+            RestTemplateProperties properties) {
+        System.out.println("RestTemplateConfig.poolingHttpClientConnectionManager,使用PoolingHttpClientConnectionManager管理连接池");
+        PoolingHttpClientConnectionManager connectionManager =
+                new PoolingHttpClientConnectionManager();
+
+        connectionManager.setMaxTotal(properties.getMaxTotal());
+        connectionManager.setDefaultMaxPerRoute(properties.getDefaultMaxPerRoute());
+        connectionManager.setValidateAfterInactivity(properties.getValidateAfterInactivity());
+
+        return connectionManager;
+    }
+
+    @Bean
+    public CloseableHttpClient httpClient(PoolingHttpClientConnectionManager connectionManager,
+                                          RestTemplateProperties properties) {
+        System.out.println("RestTemplateConfig.httpClient创建请求配置");
+        // 创建请求配置
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(properties.getConnectTimeout())
+                .setConnectionRequestTimeout(properties.getConnectionRequestTimeout())
+                .setSocketTimeout(properties.getSocketTimeout()) // 这相当于读取超时
+                .build();
+
+        return HttpClients.custom()
+                .setConnectionManager(connectionManager)
+                .setDefaultRequestConfig(requestConfig)
+                .setConnectionTimeToLive(properties.getTimeToLive(), TimeUnit.MILLISECONDS)/*连接生命周期管理*/
+                .build();
+    }
+
+    @Bean
+    public HttpComponentsClientHttpRequestFactory clientHttpRequestFactory(
+            CloseableHttpClient httpClient) {
+        System.out.println("RestTemplateConfig.clientHttpRequestFactory");
+        return new HttpComponentsClientHttpRequestFactory();
     }
 }

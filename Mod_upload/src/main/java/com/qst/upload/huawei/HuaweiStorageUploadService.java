@@ -11,10 +11,7 @@ import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -180,47 +177,8 @@ public class HuaweiStorageUploadService {
         }
         return url;
     }
-    public void downloadFileFromHuawei(String type, String filename, HttpServletResponse response) {
-        try {
-            String objectPath = type + "/" + filename;
-            String fileUrl = buildDownloadUrl(objectPath); // 构建完整下载URL
-
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-            headers.set("client_id", clientId);
-            headers.set("productId", projectId);
-            headers.set("Authorization", "Bearer " + getAccessToken());
-            headers.set("X-Agc-Trace-Id", UUID.randomUUID().toString());
-
-            HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
-
-            ResponseEntity<byte[]> responseEntity = restTemplate.exchange(
-                    fileUrl,
-                    HttpMethod.GET,
-                    requestEntity,
-                    byte[].class
-            );
-
-            if (responseEntity.getStatusCode() == HttpStatus.OK) {
-                byte[] body = responseEntity.getBody();
-                response.setContentType("application/octet-stream");
-                response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + filename);
-                response.getOutputStream().write(body);
-            } else {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Download failed");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            try {
-                response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Download failed");
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
-    }
     private String buildDownloadUrl(String objectPath) {
         String domain = getDomainByRegion(region);
         return "https://" + domain + "/" + bucketName + "/" + objectPath;
     }
-
 }

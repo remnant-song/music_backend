@@ -1,57 +1,3 @@
-#server:
-#  port: 8007
-#service:
-#  ipAddr: http://localhost
-#download:
-#  address: D:\file\
-#spring:
-#  application:
-#    name: uploadService8007
-#  servlet:
-#    multipart:
-#      max-file-size: 20MB
-#      max-request-size: 30MB
-#  mvc:
-#    static-path-pattern: /file/**
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: localhost:8848
-#  web:
-#    resources:
-#      static-locations: file:d:/file/image/
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-
-#server:
-#  port: 8007
-#service:
-#  ipAddr: http://localhost
-#download:
-#  address: D:\file\
-#spring:
-#  application:
-#    name: uploadService8007
-#  servlet:
-#    multipart:
-#      max-file-size: 20MB
-#      max-request-size: 30MB
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: localhost:8848
-#  web:
-#    resources:
-#      static-locations: file:/D:/file/image/
-#management:
-#  endpoints:
-#    web:
-#      exposure:
-#        include: '*'
-
 server:
   port: 8007
 service:
@@ -65,13 +11,21 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 30MB
+      # 添加 RestTemplate 连接池配置
+  rest:
+    template:
+      request-factory:
+        max-total: 200         # 最大连接数
+        default-max-per-route: 50 # 每个路由最大连接数
+        validate-after-inactivity: 5000 # 空闲连接检查间隔(ms)
+        time-to-live: 300000     # 连接存活时间(ms)
+        connect-timeout: 5000    # 连接超时时间(ms)
+        connection-request-timeout: 3000 # 请求超时时间(ms)
+        socket-timeout: 30000     # 读取超时时间(ms)
   cloud:
     nacos:
       discovery:
         server-addr: localhost:8848
-#  web:
-#    resources:
-#      static-locations: file:${download.address}/image/  # 使用变量确保路径一致
 management:
   endpoints:
     web:
@@ -86,12 +40,3 @@ huawei:
     storage-url: https://ops-server-drcn.agcstorage.link/v0/  # 存储服务URL
     client-id: 1723321097677493184  # 客户端ID（从凭据文件获取）
     project-id: 461323198430067964  # 项目ID（从凭据文件获取）
-
-#huawei:
-#  agc:
-#    domain: ops-server-drcn.agcstorage.link/v0 # 根据项目区域选择
-#    project-id: 7364****4461998 # 您的项目ID
-#    client-id: 8490****0232064 # 您的客户端ID
-#    credential-path: classpath:agc-apiclient-1723321097677493184-40c372f6e3e14f6c93382d2595d3052c.json
-#    storage:
-#      bucket-name: example-o999j

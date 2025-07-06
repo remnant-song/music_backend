@@ -15,7 +15,11 @@ public class MusicController {
 
     @Autowired
     IUserService userService;
-
+    @GetMapping("/MainRecommend")
+    public Mess MainRecommend(){
+        System.out.println("controller中MainRecommend接口被调用了");
+        return musicService.MainRecommend();
+    }
     @GetMapping("/Recommend")
     public Mess getRecommend(){
         System.out.println("controller中Recommend接口被调用了");
@@ -24,6 +28,7 @@ public class MusicController {
 
     @GetMapping("/RecommendList")
     public Mess getRecommendList(String param){
+        System.out.println("controller中getRecommendList接口被调用");
         return musicService.getRecommendList(param);
     }
 
