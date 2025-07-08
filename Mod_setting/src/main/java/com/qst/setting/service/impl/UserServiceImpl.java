@@ -1,19 +1,16 @@
 package com.qst.setting.service.impl;
 
-import com.alibaba.nacos.common.utils.StringUtils;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.qst.domain.entity.Mess;
 import com.qst.domain.entity.User;
 import com.qst.domain.util.MD5Utils;
-import com.qst.upload.huawei.HuaweiStorageUploadService;
 import com.qst.setting.mapper.UserMapper;
 import com.qst.setting.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Service;
 /**
  * <p>

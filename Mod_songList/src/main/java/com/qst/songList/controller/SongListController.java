@@ -73,5 +73,15 @@ public class SongListController {
         }
         return songListService.removeSongList(listId,id);
     }
-
+    @PostMapping("/update")
+    public Mess updateSongList(@RequestBody SongList songList ,@RequestHeader("Authorization") String token) {
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        Integer id = JwtUtils.getMemberIdByJwtToken(token);
+        if (id == null) {
+            return Mess.fail().mess("无效或过期的 token");
+        }
+        return songListService.updateSongList(songList,id);
+    }
 }

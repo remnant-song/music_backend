@@ -35,7 +35,7 @@ public class MusicDbUtil {
         });
 //        歌单表
         String sql3 = "SELECT image FROM song_list WHERE image IS NOT NULL";
-        jdbcTemplate.query(sql2, rs -> {
+        jdbcTemplate.query(sql3, rs -> {
             extractFilePath(rs.getString("image"), validPaths);
         });
         return validPaths;

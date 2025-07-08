@@ -1,11 +1,8 @@
-package com.qst.upload;
+package com.qst.upload.service;
 
-import com.qst.domain.entity.Log;
-import com.qst.upload.huawei.HuaweiStorageUploadService;
-import jakarta.servlet.http.HttpServletResponse;
+import com.qst.upload.service.HuaweiStorageUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import java.util.UUID;

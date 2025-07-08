@@ -6,8 +6,6 @@ import org.springframework.cloud.gateway.discovery.DiscoveryLocatorProperties;
 import org.springframework.cloud.gateway.route.RouteDefinitionLocator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.codec.ServerCodecConfigurer;
-import org.springframework.http.codec.support.DefaultServerCodecConfigurer;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
@@ -32,10 +30,6 @@ public class CorsAutoConfiguration {
         return new CorsWebFilter(source);
     }
 
-//    @Bean
-//    public ServerCodecConfigurer serverCodecConfigurer() {
-//        return new DefaultServerCodecConfigurer();
-//    }
 
     @Bean
     public RouteDefinitionLocator discoveryClientRouteDefinitionLocator(ReactiveDiscoveryClient reactiveDiscoveryClient,

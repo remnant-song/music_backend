@@ -18,18 +18,18 @@ spring:
       discovery:
         server-addr: localhost:8848
     gateway:
-#      globalcors:
-#        cors-configurations:
-#          '[/**]':
-#            allowedOrigins: "*"  # 或者使用 "*" 允许所有
-#            allowedMethods:
-#              - GET
-#              - POST
-#              - PUT
-#              - DELETE
-#              - OPTIONS
-#            allowedHeaders: "*"
-#            allowCredentials: true
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"  # 或者使用 "*" 允许所有
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
       routes:
         - id: login
           uri: lb://${service.login}
@@ -71,10 +71,6 @@ spring:
           uri: lb://${service.upload}
           predicates:
             - Path=/upload/**
-#        - id: file
-#          uri: lb://${service.upload}
-#          predicates:
-#            - Path=/file/**
         - id: file
           uri: lb://${service.upload}
           predicates:

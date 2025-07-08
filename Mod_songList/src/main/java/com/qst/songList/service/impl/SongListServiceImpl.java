@@ -2,10 +2,8 @@ package com.qst.songList.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.qst.domain.entity.ListMusic;
-import com.qst.domain.entity.Mess;
-import com.qst.domain.entity.Music;
-import com.qst.domain.entity.SongList;
+import com.qst.domain.entity.*;
+import com.qst.domain.mapper.LogMapper;
 import com.qst.songList.mapper.SongListMapper;
 import com.qst.songList.service.ISongListService;
 import com.qst.domain.util.RedisUtils;
@@ -38,6 +36,7 @@ public class SongListServiceImpl extends ServiceImpl<SongListMapper, SongList> i
     LikelistMapper likelistMapper;
     @Autowired
     RedisUtils redisUtils;
+
     // "likeListID_".concat("id")
     public List<SongList> getLikeList(Integer id) {
         List<SongList> list=null;
@@ -118,5 +117,17 @@ public class SongListServiceImpl extends ServiceImpl<SongListMapper, SongList> i
             return Mess.success().mess("删除成功");
         }
         return Mess.fail().mess("删除失败");
+    }
+
+    @Override
+    public Mess updateSongList(SongList songList, Integer id) {
+        updateById(songList);
+        Log log = new Log();
+        System.out.println("ID为 ".concat(id.toString().concat("的用户")));
+        System.out.println("更新歌曲信息 歌曲名为：");
+        System.out.println(songList.getName());
+        System.out.println(LocalDate.now());
+        redisUtils.remove("musicID_".concat(String.valueOf(songList.getId())));
+        return Mess.success().mess("修改成功");
     }
 }

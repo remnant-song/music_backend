@@ -66,7 +66,6 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
     @Override
     public Mess updateMusic(Music music, Integer id) {
         updateById(music);
-        // 3. 远程调用upload模块删除文件
         Log log = new Log();
         log.setUserName("ID为 ".concat(id.toString().concat("的用户")));
         log.setDoSome("更新歌曲信息 歌曲名为：");

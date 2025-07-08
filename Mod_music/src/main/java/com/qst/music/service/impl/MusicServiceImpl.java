@@ -90,8 +90,6 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
     @Override
     public Mess getMusic(Integer musicId,Integer id) {
         Music music= mapper.getMusic(musicId);
-//        Music music= mapper.getMusic(5);
-//        System.out.println("getMusic");
         music= (Music) redisUtils.get("musicID_".concat(String.valueOf(musicId)));
         if (music==null){
             System.out.println("redis中musicId为空");

@@ -1,4 +1,4 @@
-package com.qst.upload.huawei;
+package com.qst.upload.service;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

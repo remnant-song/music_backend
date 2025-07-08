@@ -24,4 +24,6 @@ public interface ISongListService extends IService<SongList> {
     Mess getMySongList(Integer id);
 
     Mess removeSongList(Integer listId, Integer id);
+
+    Mess updateSongList(SongList songList, Integer id);
 }

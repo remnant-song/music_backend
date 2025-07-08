@@ -1,15 +1,11 @@
-package com.qst.upload;
+package com.qst.upload.controller;
 
-import com.qst.upload.huawei.HuaweiStorageDownloadService;
+import com.qst.upload.service.HuaweiStorageDownloadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.ParameterResolutionDelegate;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/upload/download")
