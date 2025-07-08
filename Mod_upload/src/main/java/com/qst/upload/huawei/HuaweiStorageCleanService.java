@@ -216,20 +216,6 @@ public class HuaweiStorageCleanService {
         return domain;
     }
 
-//    private String getAuthUrlByRegion(String region) {
-//        Map<String, String> authUrlMap = Map.of(
-//                "CN", "https://connect-api.cloud.huawei.com/api/oauth2/v1/token",
-//                "DE", "https://connect-api-dre.cloud.huawei.com/api/oauth2/v1/token",
-//                "SG", "https://connect-api-dra.cloud.huawei.com/api/oauth2/v1/token",
-//                "RU", "https://connect-api-drru.cloud.huawei.com/api/oauth2/v1/token"
-//        );
-//        String url = authUrlMap.get(region.toUpperCase());
-//        if (url == null) {
-//            throw new IllegalArgumentException("不支持的区域: " + region);
-//        }
-//        return url;
-//    }
-
     // 复用现有Token获取逻辑（带缓存）
     private String getAccessToken() {
         // 性能统计
