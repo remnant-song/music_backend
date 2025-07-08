@@ -25,23 +25,26 @@ import java.util.concurrent.TimeUnit;
 public class RestTemplateConfig {
 
     @Bean
-    public RestTemplate restTemplate() {
-        RestTemplate restTemplate = new RestTemplate();
+    public RestTemplate restTemplate(HttpComponentsClientHttpRequestFactory requestFactory) {
+        RestTemplate restTemplate = new RestTemplate(requestFactory); // 使用连接池配置
 
         // 创建完整的消息转换器列表
         List<HttpMessageConverter<?>> converters = new ArrayList<>();
 
-        // 1. 添加JSON转换器（处理application/json）
+        // 1. 关键修改：让JSON转换器支持text/plain类型
         MappingJackson2HttpMessageConverter jsonConverter = new MappingJackson2HttpMessageConverter();
-        jsonConverter.setSupportedMediaTypes(Collections.singletonList(MediaType.APPLICATION_JSON));
+        List<MediaType> supportedMediaTypes = new ArrayList<>();
+        supportedMediaTypes.add(MediaType.APPLICATION_JSON);
+        supportedMediaTypes.add(MediaType.TEXT_PLAIN); // 新增支持text/plain
+        jsonConverter.setSupportedMediaTypes(supportedMediaTypes);
         converters.add(jsonConverter);
 
-        // 2. 添加其他必要转换器
+        // 2. 其他必要转换器（保持不变）
         converters.add(new ByteArrayHttpMessageConverter());
         converters.add(new StringHttpMessageConverter(StandardCharsets.UTF_8));
         converters.add(new FormHttpMessageConverter());
 
-        // 3. 设置转换器列表（覆盖默认转换器）
+        // 3. 设置转换器列表
         restTemplate.setMessageConverters(converters);
 
         return restTemplate;

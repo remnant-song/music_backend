@@ -4,7 +4,7 @@ service:
   login: userService8001
   music: musicService8002
   admin: adminService8003
-  singer: SingerService8004
+  singer: singerService8004
   setting: settingService8005
   msg: msgService8006
   upload: uploadService8007
@@ -18,6 +18,18 @@ spring:
       discovery:
         server-addr: localhost:8848
     gateway:
+#      globalcors:
+#        cors-configurations:
+#          '[/**]':
+#            allowedOrigins: "*"  # 或者使用 "*" 允许所有
+#            allowedMethods:
+#              - GET
+#              - POST
+#              - PUT
+#              - DELETE
+#              - OPTIONS
+#            allowedHeaders: "*"
+#            allowCredentials: true
       routes:
         - id: login
           uri: lb://${service.login}
@@ -37,7 +49,7 @@ spring:
             - Path=/admin/**
           filters:
             - Authorize=0
-        - id: admin
+        - id: singer
           uri: lb://${service.singer}
           predicates:
             - Path=/singer/**

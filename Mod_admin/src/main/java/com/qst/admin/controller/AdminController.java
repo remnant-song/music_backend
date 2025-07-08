@@ -6,6 +6,11 @@ import com.qst.admin.service.IUserService;
 import com.qst.domain.entity.Mess;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/admin")
@@ -49,4 +54,5 @@ public class AdminController {
     public Mess getLog(@PathVariable("pn")Integer pn,@PathVariable("size")Integer size){
         return logService.getLog(pn,size);
     }
+
 }

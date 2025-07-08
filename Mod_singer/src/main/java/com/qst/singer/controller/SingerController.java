@@ -15,30 +15,22 @@ public class SingerController {
     IMusicService musicService;
 
     @GetMapping("/pageMusic/{pn}/{size}")
-//    public Mess getPage(@PathVariable(value = "pn")Integer pn, @PathVariable(value = "size")Integer size, String keyword, @RequestHeader("Authorization") String token){
-//        if (token.startsWith("Bearer ")) {
-//            token = token.substring(7);
-//        }
-//        Integer id = JwtUtils.getMemberIdByJwtToken(token);
-//        return musicService.getMusic(keyword,id,pn,size);
-//    }
-
 //    同样补充 token 判空、异常处理，避免直接抛 500
-public Mess getPage(@PathVariable(value = "pn") Integer pn, @PathVariable(value = "size") Integer size, String keyword, @RequestHeader(value = "Authorization", required = false) String token) {
-    if (!StringUtils.hasLength(token)) {
-        return Mess.fail().mess("未提供token");
+    public Mess getPage(@PathVariable(value = "pn") Integer pn, @PathVariable(value = "size") Integer size, String keyword, @RequestHeader(value = "Authorization", required = false) String token) {
+        if (!StringUtils.hasLength(token)) {
+            return Mess.fail().mess("未提供token");
+        }
+        if (token.startsWith("Bearer ")) {
+            token = token.substring(7);
+        }
+        Integer id;
+        try {
+            id = JwtUtils.getMemberIdByJwtToken(token);
+        } catch (Exception e) {
+            return Mess.fail().mess("token无效或已过期");
+        }
+        return musicService.getMusic(keyword, id, pn, size);
     }
-    if (token.startsWith("Bearer ")) {
-        token = token.substring(7);
-    }
-    Integer id;
-    try {
-        id = JwtUtils.getMemberIdByJwtToken(token);
-    } catch (Exception e) {
-        return Mess.fail().mess("token无效或已过期");
-    }
-    return musicService.getMusic(keyword, id, pn, size);
-}
 
 
     @PostMapping("/addMusic")
@@ -62,6 +54,7 @@ public Mess getPage(@PathVariable(value = "pn") Integer pn, @PathVariable(value 
         if (id == null) {
             return Mess.fail().mess("无效或过期的 token");
         }
+        System.out.println("music.imageUrl="+music.getImageUrl());
         return musicService.updateMusic(music,id);
     }
 

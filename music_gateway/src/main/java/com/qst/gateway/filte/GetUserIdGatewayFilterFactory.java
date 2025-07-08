@@ -33,7 +33,7 @@ public class GetUserIdGatewayFilterFactory extends AbstractGatewayFilterFactory<
             String authorization = headers.getFirst("Authorization");
             boolean b=authorization!=null&&!authorization.equals("");
             if(request.getMethod().equals(HttpMethod.OPTIONS)){
-                chain.filter(exchange);
+                return chain.filter(exchange);
             }
             else if(!b&&config.getIsRequired()==1){
                 response.setStatusCode(HttpStatus.NOT_ACCEPTABLE);

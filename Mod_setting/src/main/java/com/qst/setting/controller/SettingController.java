@@ -47,6 +47,7 @@ public class SettingController {
         if (id == null) {
             return Mess.fail().mess("无效或过期的 token");
         }
+        System.out.println("settingController.setIcon");
         return userService.setIcon(iconUrl,id);
     }
 }

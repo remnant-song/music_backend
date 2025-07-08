@@ -50,5 +50,4 @@ public class UploadService {
         String filename = file.getOriginalFilename();
         return uuid + filename.substring(filename.lastIndexOf("."));
     }
-
 }

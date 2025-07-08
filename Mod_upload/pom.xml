@@ -23,6 +23,7 @@
             <artifactId>agconnect-commons</artifactId>
             <version>1.2.0.300</version>
         </dependency>
+
         <dependency>
             <groupId>com.qst</groupId>
             <artifactId>domain</artifactId>
@@ -56,6 +57,14 @@
             <groupId>org.apache.httpcomponents.client5</groupId>
             <artifactId>httpclient5</artifactId>
             <version>5.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
     </dependencies>
     <repositories>

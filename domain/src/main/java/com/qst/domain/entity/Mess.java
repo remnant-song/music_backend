@@ -57,6 +57,7 @@ public class Mess implements Serializable {
 
     /**
      * 修改消息
+     *
      * @return
      */
     public Mess mess(String str) {

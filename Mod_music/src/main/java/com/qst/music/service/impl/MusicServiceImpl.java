@@ -116,24 +116,35 @@ public class MusicServiceImpl extends ServiceImpl<MusicMapper, Music> implements
             return Mess.success().data("music",music);
         }
     }
-    public void  addNumb(Integer id){
+    public void addNumb(Integer id) {
         try {
-            Integer numb= (Integer) redisUtils.get("numb_".concat(String.valueOf(id)));
-            if (numb==null)numb=1;
-            else if(numb==9){
+            // 从Redis获取当前临时计数
+            Integer numb = (Integer) redisUtils.get("numb_".concat(String.valueOf(id)));
+
+            if (numb == null) {
+                // 首次计数，初始化为1
+                numb = 1;
+            } else if (numb == 9) {
+                // 累计达到9次时，批量更新到数据库（+10）
                 UpdateWrapper<Music> wrapper = new UpdateWrapper<>();
-                wrapper.eq("music_id",id).setSql("listen_numb = listen_numb+10");
+                wrapper.eq("music_id", id).setSql("listen_numb = listen_numb+10");
                 update(wrapper);
-                numb=0;
-            }else {
+                // 重置临时计数
+                numb = 0;
+            } else {
+                // 未达到阈值，计数+1
                 numb++;
             }
-            redisUtils.set("numb_".concat(String.valueOf(id)),numb);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
 
+            // 将新的临时计数写回Redis（无过期时间）
+            redisUtils.set("numb_".concat(String.valueOf(id)), numb);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
+//    不直接每次播放都更新数据库，而是累计到一定次数（10 次）再批量更新
+//    利用 Redis 的高性能处理高频读 / 写
+//    减少数据库压力
     public List<Music> getMyLike(Integer id){
         List<Music> myLikeList=null;
         try{

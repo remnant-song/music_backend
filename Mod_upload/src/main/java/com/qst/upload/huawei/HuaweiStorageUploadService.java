@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Collections;
@@ -68,13 +69,12 @@ public class HuaweiStorageUploadService {
             HttpEntity<byte[]> requestEntity = new HttpEntity<>(file.getBytes(), headers);
 
             // 执行PUT请求
-            ResponseEntity<String> response = restTemplate.exchange(
+            ResponseEntity<Map> response = restTemplate.exchange(
                     url,
                     HttpMethod.PUT,
                     requestEntity,
-                    String.class
+                    Map.class
             );
-
             // 处理响应
             if (response.getStatusCode() == HttpStatus.OK) {
                 log.info("文件上传成功，华为云URL: {}", url);
@@ -95,7 +95,6 @@ public class HuaweiStorageUploadService {
         String domain = getDomainByRegion(region);
         return "https://" + domain + "/" + bucketName + "/" + objectPath;
     }
-
     /**
      * 根据区域获取域名
      */
