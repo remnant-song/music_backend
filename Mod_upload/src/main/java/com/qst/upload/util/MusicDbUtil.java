@@ -28,10 +28,15 @@ public class MusicDbUtil {
             extractFilePath(rs.getString("music_url"), validPaths);
             extractFilePath(rs.getString("lyric"), validPaths);
         });
+//        user表
         String sql2 = "SELECT image_url FROM user WHERE image_url IS NOT NULL";
         jdbcTemplate.query(sql2, rs -> {
-            // 处理每个URL，提取华为云实际文件路径
             extractFilePath(rs.getString("image_url"), validPaths);
+        });
+//        歌单表
+        String sql3 = "SELECT image FROM song_list WHERE image IS NOT NULL";
+        jdbcTemplate.query(sql2, rs -> {
+            extractFilePath(rs.getString("image"), validPaths);
         });
         return validPaths;
     }
