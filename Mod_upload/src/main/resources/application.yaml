@@ -1,0 +1,47 @@
+server:
+  port: 8007
+service:
+  ipAddr: http://localhost
+download:
+  address: D:\file\
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/training?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC
+    username: root
+    password: root
+  application:
+    name: uploadService8007
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 30MB
+      # 添加 RestTemplate 连接池配置
+  rest:
+    template:
+      request-factory:
+        max-total: 200         # 最大连接数
+        default-max-per-route: 50 # 每个路由最大连接数
+        validate-after-inactivity: 5000 # 空闲连接检查间隔(ms)
+        time-to-live: 300000     # 连接存活时间(ms)
+        connect-timeout: 5000    # 连接超时时间(ms)
+        connection-request-timeout: 3000 # 请求超时时间(ms)
+        socket-timeout: 30000     # 读取超时时间(ms)
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+huawei:
+  agc:
+    credential-path: D:\Download\agc-apiclient-1723321097677493184-40c372f6e3e14f6c93382d2595d3052c.json  # 凭据文件路径
+    bucket-name: example-o999j  # 存储桶名称
+    region: CN  # 区域标识（CN/DE/SG/RU）
+    storage-url: https://ops-server-drcn.agcstorage.link/v0/  # 存储服务URL
+    client-id: 1723321097677493184  # 客户端ID（从凭据文件获取）
+    project-id: 461323198430067964  # 项目ID（从凭据文件获取）

@@ -1,0 +1,91 @@
+server:
+  port: 80
+service:
+  login: userService8001
+  music: musicService8002
+  admin: adminService8003
+  singer: singerService8004
+  setting: settingService8005
+  msg: msgService8006
+  upload: uploadService8007
+  songList: songListService8008
+  like: likeService8009
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"  # 或者使用 "*" 允许所有
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
+            allowCredentials: true
+      routes:
+        - id: login
+          uri: lb://${service.login}
+          predicates:
+            - Path=/login/**
+          filters:
+            - GetUserId
+        - id: music
+          uri: lb://${service.music}
+          predicates:
+            - Path=/music/**
+          filters:
+            - GetUserId
+        - id: admin
+          uri: lb://${service.admin}
+          predicates:
+            - Path=/admin/**
+          filters:
+            - Authorize=0
+        - id: singer
+          uri: lb://${service.singer}
+          predicates:
+            - Path=/singer/**
+          filters:
+            - Authorize=1
+        - id: setting
+          uri: lb://${service.setting}
+          predicates:
+            - Path=/setting/**
+          filters:
+            - GetUserId=1
+        - id: msg
+          uri: lb://${service.msg}
+          predicates:
+            - Path=/msg/**
+          filters:
+            - GetUserId=1
+        - id: upload
+          uri: lb://${service.upload}
+          predicates:
+            - Path=/upload/**
+        - id: file
+          uri: lb://${service.upload}
+          predicates:
+            - Path=/file/**
+          filters:
+            - RewritePath=/file/(?<segment>.*), /image/${segment}
+        - id: songList
+          uri: lb://${service.songList}
+          predicates:
+            - Path=/songList/**
+          filters:
+            - GetUserId
+        - id: like
+          uri: lb://${service.like}
+          predicates:
+            - Path=/mylike/**
+          filters:
+            - GetUserId=1

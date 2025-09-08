@@ -1,0 +1,78 @@
+
+1. 用户表 user
+CREATE TABLE `user` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '用户id',
+  `username` VARCHAR(255) NOT NULL COMMENT '用户名',
+  `password` VARCHAR(255) DEFAULT NULL COMMENT '密码',
+  `email` VARCHAR(255) DEFAULT NULL COMMENT '邮箱（不重复）',
+  `phone` VARCHAR(255) DEFAULT NULL COMMENT '手机号（不重复）',
+  `role` INT(255) DEFAULT NULL COMMENT '规则（0为管理员 1为歌手 2为普通用户）',
+  `about` VARCHAR(255) DEFAULT NULL COMMENT '用户简介',
+  `activation` INT(255) DEFAULT 0 COMMENT '是否激活（针对歌手）',
+  `image_url` VARCHAR(255) DEFAULT NULL COMMENT '头像url',
+  `create_time` DATE DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uniq_email` (`email`),
+  UNIQUE KEY `uniq_phone` (`phone`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户表';
+2. 歌曲信息表 music
+CREATE TABLE `music` (
+  `music_id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '音乐id',
+  `music_name` VARCHAR(255) NOT NULL COMMENT '歌曲名',
+  `music_url` VARCHAR(255) NOT NULL COMMENT '地址（对应UUID名）',
+  `image_url` VARCHAR(255) NOT NULL COMMENT '封面url',
+  `activation` INT(255) NOT NULL COMMENT '是否激活（0激活 1用户锁定 2管理员锁定）',
+  `listen_numb` INT(255) NOT NULL DEFAULT 0 COMMENT '播放量',
+  `from_singer` INT(255) NOT NULL COMMENT '对应的用户',
+  `lyric` VARCHAR(255) DEFAULT NULL COMMENT '歌词',
+  `tags` VARCHAR(255) DEFAULT NULL COMMENT '标签',
+  `timelength` INT(11) DEFAULT NULL COMMENT '时长',
+  `create_time` DATE DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`music_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='歌曲信息表';
+3. 操作日志表 log
+CREATE TABLE `log` (
+  `create_date` DATE DEFAULT NULL COMMENT '创建时间',
+  `do_some` VARCHAR(255) DEFAULT NULL COMMENT '操作记录',
+  `MusicName` VARCHAR(255) DEFAULT NULL COMMENT '操作歌曲记录',
+  `userName` VARCHAR(255) DEFAULT NULL COMMENT '用户名'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='操作日志表';
+4. 歌曲收藏表 mylike
+CREATE TABLE `mylike` (
+  `user` INT(255) NOT NULL COMMENT '用户id',
+  `music` INT(255) NOT NULL COMMENT '歌曲id',
+  PRIMARY KEY (`user`, `music`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='歌曲收藏表';
+5. 用户消息表 msg
+CREATE TABLE `msg` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '消息id',
+  `user_id` INT(11) DEFAULT NULL COMMENT '用户id',
+  `title` VARCHAR(255) DEFAULT NULL COMMENT '消息标题',
+  `msg` VARCHAR(255) DEFAULT NULL COMMENT '消息内容',
+  `isread` INT(255) DEFAULT 1 COMMENT '是否是已读消息（0未读，1已读）',
+  `create_time` DATE DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户消息表';
+6. 歌单信息表 song_list
+CREATE TABLE `song_list` (
+  `id` INT(11) NOT NULL AUTO_INCREMENT COMMENT '歌单id',
+  `name` VARCHAR(255) DEFAULT NULL COMMENT '歌单名',
+  `image` VARCHAR(255) DEFAULT NULL COMMENT '歌单封面url',
+  `message` VARCHAR(255) DEFAULT NULL COMMENT '歌单信息',
+  `tags` VARCHAR(255) DEFAULT NULL COMMENT '歌单标签',
+  `user` INT(255) DEFAULT NULL COMMENT '所属用户id',
+  `create_date` DATE DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='歌单信息表';
+7. 歌单歌曲关系表 list_music
+CREATE TABLE `list_music` (
+  `listid` INT(255) NOT NULL COMMENT '歌单id',
+  `music` INT(255) NOT NULL COMMENT '歌曲id',
+  PRIMARY KEY (`listid`, `music`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='歌单-歌曲关系表';
+8. 用户歌单收藏关系表 likelist
+CREATE TABLE `likelist` (
+  `listId` INT(11) NOT NULL COMMENT '歌单id',
+  `userId` INT(11) NOT NULL COMMENT '用户id',
+  PRIMARY KEY (`listId`, `userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户-歌单收藏表';
