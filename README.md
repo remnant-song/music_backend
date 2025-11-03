@@ -4,15 +4,12 @@
 
 “悦享音乐”是一个基于 **Spring Boot + Vue 3** 构建的全栈音乐网站系统。可用于充作课设/课程设计。
 项目分为 **前台移动端网页** 与 **后台管理系统** 两部分，提供音乐播放、收藏、歌单管理、AI 分析等功能。
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0;">
-  <img src="https://github.com/user-attachments/assets/336ccb23-7bef-4815-b2b7-d7797d0fadba" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-  <img src="https://github.com/user-attachments/assets/8d743154-8610-450e-bbbb-4355aca1a317" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-  <img src="https://github.com/user-attachments/assets/6efc9608-3fa4-4805-85f2-1dde643d8841" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-  <img src="https://github.com/user-attachments/assets/7b8939d2-de77-4693-b6e6-7f3c411d5fe0" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-  <img src="https://github.com/user-attachments/assets/82cac1eb-f0c3-4659-86fd-55b94f216169" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-  <img src="https://github.com/user-attachments/assets/b9843363-c3e2-43ea-b0dd-ff354b1469d3" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-  <img src="https://github.com/user-attachments/assets/98d2da18-3e44-446c-bac5-1de24dffb524" alt="image" style="flex: 1; min-width: 300px; max-width: 48%;" />
-</div>
+|  |  |
+| --- | --- |
+| <img width="100%" alt="项目截图1" src="https://github.com/user-attachments/assets/336ccb23-7bef-4815-b2b7-d7797d0fadba" /> | <img width="100%" alt="项目截图2" src="https://github.com/user-attachments/assets/8d743154-8610-450e-bbbb-4355aca1a317" /> |
+| <img width="100%" alt="项目截图3" src="https://github.com/user-attachments/assets/6efc9608-3fa4-4805-85f2-1dde643d8841" /> | <img width="100%" alt="项目截图4" src="https://github.com/user-attachments/assets/7b8939d2-de77-4693-b6e6-7f3c411d5fe0" /> |
+| <img width="100%" alt="项目截图5" src="https://github.com/user-attachments/assets/82cac1eb-f0c3-4659-86fd-55b94f216169" /> | <img width="100%" alt="项目截图6" src="https://github.com/user-attachments/assets/b9843363-c3e2-43ea-b0dd-ff354b1469d3" /> |
+| <img width="100%" alt="项目截图7" src="https://github.com/user-attachments/assets/98d2da18-3e44-446c-bac5-1de24dffb524" /> |  |
 
 ---
 
