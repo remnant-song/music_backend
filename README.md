@@ -4,6 +4,13 @@
 
 “悦享音乐”是一个基于 **Spring Boot + Vue 3** 构建的全栈音乐网站系统。可用于充作课设/课程设计。
 项目分为 **前台移动端网页** 与 **后台管理系统** 两部分，提供音乐播放、收藏、歌单管理、AI 分析等功能。
+<img width="816" height="935" alt="image" src="https://github.com/user-attachments/assets/336ccb23-7bef-4815-b2b7-d7797d0fadba" />
+<img width="790" height="956" alt="image" src="https://github.com/user-attachments/assets/8d743154-8610-450e-bbbb-4355aca1a317" />
+<img width="954" height="937" alt="image" src="https://github.com/user-attachments/assets/6efc9608-3fa4-4805-85f2-1dde643d8841" />
+<img width="973" height="924" alt="image" src="https://github.com/user-attachments/assets/7b8939d2-de77-4693-b6e6-7f3c411d5fe0" />
+<img width="818" height="920" alt="image" src="https://github.com/user-attachments/assets/82cac1eb-f0c3-4659-86fd-55b94f216169" />
+<img width="741" height="843" alt="image" src="https://github.com/user-attachments/assets/b9843363-c3e2-43ea-b0dd-ff354b1469d3" />
+<img width="1250" height="612" alt="image" src="https://github.com/user-attachments/assets/98d2da18-3e44-446c-bac5-1de24dffb524" />
 
 ---
 ## 注意：
@@ -145,4 +152,5 @@ resources/    配置文件（数据库、端口、服务名等）
 ## ❤️ 致谢
 
 感谢团队成员的共同努力
+
 
