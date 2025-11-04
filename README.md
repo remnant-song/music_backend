@@ -5,6 +5,15 @@
 “悦享音乐”是一个基于 **Spring Boot + Vue 3** 构建的全栈音乐网站系统。可用于充作课设/课程设计。
 项目分为 **前台移动端网页** 与 **后台管理系统** 两部分，提供音乐播放、收藏、歌单管理、AI 分析等功能。
 
+|  |  |
+| --- | --- |
+| <img width="100%" alt="项目截图1" src="https://github.com/user-attachments/assets/336ccb23-7bef-4815-b2b7-d7797d0fadba" /> | <img width="100%" alt="项目截图2" src="https://github.com/user-attachments/assets/8d743154-8610-450e-bbbb-4355aca1a317" /> |
+| <img width="100%" alt="项目截图3" src="https://github.com/user-attachments/assets/6efc9608-3fa4-4805-85f2-1dde643d8841" /> | <img width="100%" alt="项目截图4" src="https://github.com/user-attachments/assets/7b8939d2-de77-4693-b6e6-7f3c411d5fe0" /> |
+| <img width="100%" alt="项目截图5" src="https://github.com/user-attachments/assets/82cac1eb-f0c3-4659-86fd-55b94f216169" /> | <img width="100%" alt="项目截图6" src="https://github.com/user-attachments/assets/b9843363-c3e2-43ea-b0dd-ff354b1469d3" /> |
+<p align="center"><img width="80%" alt="项目截图7" src="https://github.com/user-attachments/assets/98d2da18-3e44-446c-bac5-1de24dffb524" /></p>
+
+
+
 ---
 ## 注意：
 华为云配置文件位置写死到代码里了，请根据实际情况修改代码
@@ -126,15 +135,7 @@ resources/    配置文件（数据库、端口、服务名等）
 
 ---
 
-## 🔍 项目总结与反思
-
-### 小组成员
-
-* 前台开发与文档：负责移动端页面与交互
-* 后台开发与 PPT 制作：负责后端逻辑与云服务集成
-* 后台前端开发与文档：负责管理系统与统计可视化
-
-### 存在问题
+## 🔍 存在问题
 
 1. 未实现歌手关注、点赞与评论等交互功能
 2. 模块划分尚不够清晰
@@ -145,4 +146,6 @@ resources/    配置文件（数据库、端口、服务名等）
 ## ❤️ 致谢
 
 感谢团队成员的共同努力
+
+
 
